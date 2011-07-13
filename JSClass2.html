@@ -38,15 +38,34 @@ function carName(){
         }
         //do something with the cars
         function makeCars(){
+        
+            var result="";
             var mercedes = new car("Mercedes","SL500","2011");
+            for(var props in mercedes){
+                result += props;
+            }
+            document.write("Mercedes props:"+result);
+            document.write("Mercedes:"+mercedes.make+"Model:"+mercedes.model+"Year:"+mercedes.year);
+            var daveCar={make:"Honda",model:"S2000"};
+            result ="";
+            
+            for(var i in daveCar){
+                result+= daveCar[i];
+            }
+            document.write("DaveCar:"+result);
+                
             var ford = new car("Ford","F150","2008");
             var chevy = new car("Chevy","Express","2003");
+                                    document.write("Im making cars");
+
             var carArray = new Array(mercedes,ford,chevy);
+            
             for(i=0;i<carArray.length;i++){
-            for(car in carArray[i]){
-                document.write("\nCar is "+car.make);
+               document.write("<br> carArray"+carArray[i].make+"</br>");
+            for(var auto in carArray[i]){
+                document.write("\nCar is "+carArray[i][auto]);
             }
-            }
+           }
         }
         
             
