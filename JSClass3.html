@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JS Class Two</title>
+<script type="text/javascript">
+<!-- Hide Script from old browsers
+function car(make, model,year,owner){
+    this.make=make;
+    this.model=model;
+    this.year = year;
+    this.owner=owner;
+    this.displayCar = displayCar
+}
+function displayCar(){
+    document.write(this.make+","+this.model+","+this.year);
+}
+function owner(name,age){
+    this.name=name;
+    this.age=age;
+    this.printOwner=printOwner;
+}
+function printOwner(){
+    document.write(this.name+","+this.age);
+}
+
+dodge= new car("Dodge","Viper","2008");
+honda = new car("Honda","S2000","2007");
+dodge.displayCar();
+honda.displayCar();
+dave= new owner("Dave",43);
+honda.owner=dave;
+document.write("<BR>manual name"+honda.owner.name+"manual age"+honda.owner.age);
+document.write("<BR> printing owner from car object<BR>"); 
+honda.owner.printOwner();
+document.write("<BR>print owner, by owner");
+dave.printOwner();
+</script>
+<body>
+<div id="filler">Don't Click Here</div>
+</body>
+</html>

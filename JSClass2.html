@@ -36,10 +36,19 @@ function carName(){
             this.model= model;
             this.year = year;
         }
+        function owner(name,age){
+            this.name = name;
+            this.age = age;
+        }
         //do something with the cars
         function makeCars(){
         
             var result="";
+            //create some owners
+            var dave = new owner("Dave",43);
+            var elsa = new owner("Elsa",46);
+            
+            //create some cars
             var mercedes = new car("Mercedes","SL500","2011");
             for(var props in mercedes){
                 result += props;
@@ -52,11 +61,23 @@ function carName(){
             for(var i in daveCar){
                 result+= daveCar[i];
             }
-            document.write("DaveCar:"+result);
+            document.write("<BR>DaveCar:"+result);
                 
             var ford = new car("Ford","F150","2008");
             var chevy = new car("Chevy","Express","2003");
                                     document.write("Im making cars");
+                                    
+            //Add an owner to a car
+            
+            //add property to car object, owner
+            car.prototype.owner=null;
+            chevy.owner = dave;
+            ford.owner=dave;
+            mercedes.owner=elsa;
+            
+            document.write("<BR>Chevy owner name:"+chevy.owner.name+" Age:"+chevy.owner.age);
+            document.write("<BR>Ford owner name:"+ford.owner.name+" Age:"+ford.owner.age);
+            document.write("<BR>Merc owner name:"+mercedes.owner.name+" Age:"+mercedes.owner.age);
 
             var carArray = new Array(mercedes,ford,chevy);
             
