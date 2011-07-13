@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>JS Class One</title>
 <script type="text/javascript">
+<!--
 function message(msg){
     if(msg){
         alert(msg)
@@ -18,12 +19,52 @@ function showDiv(divID){
 function hideDiv(divID){
     document.getElementById(divID).style.visibility='hidden';
 }
+function loopit(){
+    var coffee= new Array("Kona","Mexico","Columbian","French Roast","HomeRoast","Starbucks");
+    document.write("list");
+    document.write("<ul>");
+    for(i=0; i<5; i++){
+        document.write("<li type='square'>item: "+coffee[i]+"</li>");
+    }
+}
+function determineAge(){
+    age=window.prompt("Enter your age","Age");
+    switch (age){
+        case (age<18):
+        alert("under 18"+age);
+        break;
+        case(age<=23):
+        alert("middle"+age);
+        break;
+        default:
+        alert("dropped thru"+age);
+    }
+}
+
+function ifDetermineAge(){
+    var age = window.prompt("Enter your age", "Age");
+    if(age <=18){
+        alert("18 and under"+age);
+    }
+    else if (age<=23){
+        alert("23 and under"+age);
+    }
+    else{
+    alert("old"+age);
+    }
+} 
+        
+ // -->   
+
 </script>
 </head>
-<body onload="message()">
+<body> 
 <div id="someID" onclick="message('You Clicked')" > Click Here</div>
 <div id="showID" onclick="hideDiv('showID')"> Click to Show </div>
 <div id="hideID" onclick="showDiv('hideID')"> Hide me </div>
+<div id="listIt" onclick="loopit()">Click for List</div>
+<div id="ageID" onclick="determineAge()"> Click for age </div>
+<div id="ageID" onclick="ifDetermineAge()"> Click for age vers 2 </div>
 
 </body>
 </html>
