@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JS Class Two</title>
+<script type="text/javascript">
+<!-- Hide Script from old browsers
+var strVar="<br>";
+
+myFirstCar ={name:"Toyota",color:"Blue", wheels:4,power:"150 hrs"};
+mySecondCar ={name:"Ford",color:"green",wheels:6,power:"200 hrs"};
+myCurrentCar={name:"Mercedes",color:"Black",wheels:8,power:"320 hrs"}
+// Car Name
+function carName(){
+    document.write("<table border=\"1\"><tr><td>");
+    document.write(myFirstCar.name+strVar);
+    document.write("</td><td>");
+    document.write(mySecondCar.name+strVar);
+        document.write("</td><td>");
+    document.write(myCurrentCar.name+strVar);
+    document.write("</td></tr></table>");
+    }
+    //Car Color
+    function carColor(){
+         document.write("<table border=\"1\"><tr><td>");
+        document.write(myFirstCar.color+strVar);
+            document.write("</td><td>");
+            document.write(mySecondCar.color+strVar);
+            document.write("</td><td>");
+        document.write(myCurrentCar.color+strVar);
+        document.write("</td></tr></table>");
+        }
+        //Car Object
+        function car(make,model,year){
+            this.make = make;
+            this.model= model;
+            this.year = year;
+        }
+        //do something with the cars
+        function makeCars(){
+            var mercedes = new car("Mercedes","SL500","2011");
+            var ford = new car("Ford","F150","2008");
+            var chevy = new car("Chevy","Express","2003");
+            var carArray = new Array(mercedes,ford,chevy);
+            for(i=0;i<carArray.length;i++){
+            for(car in carArray[i]){
+                document.write("\nCar is "+car.make);
+            }
+            }
+        }
+        
+            
+        
+        document.write("<h1>CarNames</h1>");
+        carName();
+        document.write("<h1>CarColor</h1>");
+        carColor();
+        document.write("some more cars");
+        makeCars();
+        //--> End script
+        </script>
+        </head>
+        <body>
+        </body>
+        </html>
+        
