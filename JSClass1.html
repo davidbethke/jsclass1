@@ -12,10 +12,18 @@ function message(msg){
     alert("did this work");
     }
 }
+function showDiv(divID){
+    document.getElementById(divID).style.visibility='visible';
+}
+function hideDiv(divID){
+    document.getElementById(divID).style.visibility='hidden';
+}
 </script>
 </head>
 <body onload="message()">
-<div id="someID" onclick="message('You Clicked')" > Click Here
-</div>
+<div id="someID" onclick="message('You Clicked')" > Click Here</div>
+<div id="showID" onclick="hideDiv('showID')"> Click to Show </div>
+<div id="hideID" onclick="showDiv('hideID')"> Hide me </div>
+
 </body>
 </html>
