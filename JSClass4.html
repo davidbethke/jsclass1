@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JS Class Four</title>
+<script type="text/javascript">
+<!-- Hide Script from old browsers
+function forIn(){
+    var car= new auto();
+    car.make="Ford";
+    car.model="Mustang";
+    var result="";
+    for (var i in car){
+        result+= i +"<BR>";
+    }    
+    document.write("<BR>Results from forIn:<BR>"+result);    
+}
+function forIn2(){
+    var car = new auto();
+    car.make="Ford";
+    car.model="Mustang";
+    var result="";
+    for (var i in car){
+        result+=car[i]+"<BR>";
+    }
+    document.write("<BR>Results from forIn2:<BR>"+result);
+}
+function auto(){
+    var make;
+    var model;
+}
+
+forIn();
+forIn2();
+//-->
+</script>
+<body></body>
+</html>
+
