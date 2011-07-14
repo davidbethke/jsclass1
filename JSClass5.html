@@ -2,17 +2,55 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>JS Class Four</title>
+<title>JS Class Five</title>
 <script type="text/javascript">
 <!--
 function createWindow(){
     var msgWindow= window.open("http://www.google.com","displayWindow","toolbar=no,scrollbars=yes,locatoin=no,width=400,height=400");
 }
-createWindow();
- 
+//createWindow();
+var wndw
+var wndwHandle;
+function newWindow(){
+    wndw=window.open("http://www.google.com/","displayWindow");
+   prompt("Who opened a window?","you did");
+}
+function delWindow(){
+    if(wndw != undefined){
+        wndw.close();
+        confirm("A new window has closed");
+    }else{
+        alert("window is closed!");
+         
+    }
+}
+function writeExample(){
+    for(var i=0;i<30;i++){
+        document.writeln("2<sup>"+i+"</sup>= "+(1<<i)+";<br>");
+    }
+}
+function openWindow(){
+    wndwHandle=window.open('about:blank','windowName','width=400,height=400');
+    setTimeout('updateWindow()',2000);
+}
+function updateWindow(){
+    wndwHandle.document.open();
+    wndwHandle.document.write('<HTML><HEAD><TITLE>Hello World<\/TITLE><\/HEAD><BODY><H1>Hello World<\/H1><\/BODY><\/HTML>');
+    wndwHandle.document.close();
+}
+    
+    
+
  
  
  //-->
  </script>
- <body></body>
+ <body>
+ <p><a href="javascript:newWindow()"> open new window</a>
+ <p><a href="javascript:delWindow()">close new window</a>
+ <p><a href="javascript:writeExample()">write Example</a>
+  <p><a href="javascript:openWindow()">openWindow</a>
+
+
+ </body>
  </html>
