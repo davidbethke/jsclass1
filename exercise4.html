@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Validation Example</title>
+<script type="text/javascript">
+<!--
+
+var age;
+
+ 
+function promptUser(){
+    
+    determineAge();
+    
+}
+function checkEmpty(element,message){
+    if(element.value.length == 0){
+        alert(message);
+        element.focus();
+        return false;
+    }
+    return true;
+}
+
+//-->
+</script>
+</head>
+<body>
+<form name="form1"  method="get" onSubmit="return false;">
+First name:<input type ="text" name="firstName" size="20" ><br />
+Last name:<input type ="text" name="lastName" size="20" ><br />
+Street Address:<input type ="text" name="address" size="40" ><br />
+City:<input type ="text" name="city" size="20" ><br />
+Zip:<input type ="text" name="zip" size="5" ><br />
+Country:<input type ="text" name="country" size="40" ><br />
+Occupation:<input type ="text" name="occupation" size="40" ><br />
+Education Level:<input type ="text" name="education" size="40" ><br />
+Hobbies:<input type ="text" name="hobbies" size="40" >
+</form>
+<span></span>
+<HR></HR>
+<form>
+Enter Required Field:<input type='text' id='required'/>
+<input type='button' onclick="checkEmpty(document.getElementById('required'), 'No Value Entered')" value='CheckEmpty'/>
+</form>
+
+</body>
+<html>
