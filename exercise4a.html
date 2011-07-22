@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Validation Example</title>
+<link rel="stylesheet" type="text/css" href="classCss2.css" />
+<script type="text/javascript">
+<!--
+
+var age;
+
+ document.getElementById('TestPane').style.visibility == 'hidden';
+function promptUser(){
+    
+    determineAge();
+    
+}
+function checkEmpty(element,message){
+    if(element.value.length == 0){
+        showAlert(element,message);
+    }
+    return true;
+}
+function checkNumbersOnly(element,message){
+    var numericExpression= /^[0-9]+$/;
+    if(element.value.match(numericExpression)){
+        return true;
+    }else{
+        showAlert(element,message);
+    }
+}
+function checkLettersOnly(element,message){
+    var letterExpression =/^[a-zA-Z]+$/;
+    if(element.value.match(letterExpression)){
+        return true;
+    }else{
+        showAlert(element,message);
+    }
+}
+function checkLength(element,minVal, maxVal,message){
+    if(element.value.length >= minVal && element.value.length <= maxVal){
+        return true;
+    }else{
+        showAlert(element,message);
+    }
+}
+function checkEmail(element,message){
+    var validExpression=/^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-Z0-9]{2,4}$/;
+    if(element.value.match(validExpression)){
+        return true;
+    }else{
+        showAlert(element,message);
+    }
+}
+function checkSelection(element,badMatch,message){
+    
+    if(element.value==badMatch){
+        showAlert(element,message);
+    }else{
+        return true;
+    }
+}
+function checkAlphaNumeric(element,message){
+    var alphaNumeric=/^[0-9a-zA-Z]+$/;
+    if(element.value.match(alphaNumeric)){
+        return true;
+    }else{
+        showAlert(element,message);
+    }
+}
+
+function showAlert(element,message){
+    alert(message);
+    element.focus();
+    return false;
+}
+function toggleTestPane(){
+    if(document.getElementById('TestPane').style.visibility == 'hidden'){
+        document.getElementById('TestPane').style.visibility='visible';
+    }else{
+        document.getElementById('TestPane').style.visibility='hidden';
+    }
+}
+
+    
+
+//-->
+</script>
+</head>
+<body>
+<HR></HR>
+<div class="header">
+<h1>Austin Build-A-Resume</h1>
+</div>
+<HR></HR>
+<div class='mainOuter threecol'>
+    <div class="main">
+        <div class='colLeft'>
+            <div id='formEntry' class='formEntry'>
+            <h2> Enter Your Information Here</h2>
+            <HR></HR>
+        <form name="form1"  method="get" onSubmit="return false;">
+        First name:<input type ="text" name="firstName" size="20" ><br />
+        Last name:<input type ="text" name="lastName" size="20" ><br />
+        Street Address:<input type ="text" name="address" size="30" ><br />
+        City:<input type ="text" name="city" size="20" ><br />
+        Zip:<input type ="text" name="zip" size="5" ><br />
+        Country:<select id="country"name="country" ><br />
+            <option>Select Your Country</option>
+            <option>USA</option>
+            <option>UK</option>
+            <option>Canada</option>
+            <option>Mexico</option>
+        </select><br/>
+        Occupation:<input type ="text" name="occupation" size="30" ><br />
+        Education Level:<select id='education'name='education'>
+            <option> Enter Highest Education </option>
+            <option>High School</option>
+            <option>Some College</option>
+            <option>College Degree (2yr)</option>
+            <option>College Degree (4yr)</option>
+            <option>Graduate School</option>
+            <option>Post Graduate School</option>
+        </select>
+        <p>Hobbies:</p>
+        <textarea  name="hobbies" rows='15' cols='40'></textarea>
+        </form>
+    </div>
+    <div class='left'>Left Column</div>
+    <div class='right'>Right Column</div>
+</div>
+</div>
+</div>
+
+<div class="footer"></div>
+
+</body>
+<html>
