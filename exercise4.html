@@ -15,12 +15,67 @@ function promptUser(){
 }
 function checkEmpty(element,message){
     if(element.value.length == 0){
-        alert(message);
-        element.focus();
-        return false;
+        showAlert(element,message);
     }
     return true;
 }
+function checkNumbersOnly(element,message){
+    var numericExpression= /^[0-9]+$/;
+    if(element.value.match(numericExpression)){
+        return true;
+    }else{
+        showAlert(element,message);
+    }
+}
+function checkLettersOnly(element,message){
+    var letterExpression =/^[a-zA-Z]+$/;
+    if(element.value.match(letterExpression)){
+        return true;
+    }else{
+        showAlert(element,message);
+    }
+}
+function checkLength(element,minVal, maxVal,message){
+    if(element.value.length >= minVal && element.value.length <= maxVal){
+        return true;
+    }else{
+        showAlert(element,message);
+    }
+}
+function checkEmail(element,message){
+    var validExpression=/^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-Z0-9]{2,4}$/;
+    if(element.value.match(validExpression)){
+        return true;
+    }else{
+        showAlert(element,message);
+    }
+}
+function checkSelection(element,badMatch,message){
+    
+    if(element.value==badMatch){
+        showAlert(element,message);
+    }else{
+        return true;
+    }
+}
+
+    
+
+
+function showAlert(element,message){
+    alert(message);
+    element.focus();
+    return false;
+}
+function toggleTestPane(){
+    if(document.getElementById('TestPane').style.visibility == 'hidden'){
+        document.getElementById('TestPane').style.visibility='visible';
+    }else{
+        document.getElementById('TestPane').style.visibility='hidden';
+    }
+}
+
+    
 
 //-->
 </script>
@@ -39,10 +94,39 @@ Hobbies:<input type ="text" name="hobbies" size="40" >
 </form>
 <span></span>
 <HR></HR>
+<div onclick="toggleTestPane()">Click to Show Test Pane </div>
+<div id='TestPane'>
 <form>
 Enter Required Field:<input type='text' id='required'/>
 <input type='button' onclick="checkEmpty(document.getElementById('required'), 'No Value Entered')" value='CheckEmpty'/>
 </form>
+<form>
+Enter Numbers Only:<input type='text' id='numbersOnly'/>
+<input type='button' onclick="checkNumbersOnly(document.getElementById('numbersOnly'), 'Only Enter Numbers')" value='CheckNumbers'/>
+</form>
+<form>
+Enter Letters Only:<input type='text' id='lettersOnly'/>
+<input type='button' onclick="checkLettersOnly(document.getElementById('lettersOnly'),'Only Enter Letters')" value='CheckLetters'/>
+</form>
+<form>
+Enter length between 1-9 characters:<input type='text' id='length'/>
+<input type='button' onclick="checkLength(document.getElementById('length'),1,9,'Wrong Length')" value='CheckLength'/>
+</form>
+<form>
+Enter an email address:<input type='text' id='emailAddress'/>
+<input type='button' onclick="checkEmail(document.getElementById('emailAddress'),'Invalid Email')" value='CheckEmail'/>
+</form>
+<form>
+Selection:<select id='selection'>
+<option>Please Choose</option>
+<option>CA</option>
+<option>WI</option>
+<option>IL</option>
+</select>
+<input type ='button' onclick="checkSelection(document.getElementById('selection'),'Please Choose','No Selection Made')" value='CheckSelection'/>
+</form>
+</div>
+
 
 </body>
 <html>
