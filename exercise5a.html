@@ -11,13 +11,35 @@ var age;
  document.getElementById('TestPane').style.visibility == 'hidden';
 function validate(){
     var f =document.forms[0];
-    
-     //document.write(f.elements[0].value);
-    
+    var fName=document.getElementById('firstName');
+    var lName=document.getElementById('lastName');
+    var address=document.getElementById('address');
+    var city=document.getElementById('city');
+    var zip=document.getElementById('zip');
+    var country=document.getElementById('country');
+    var occupation=document.getElementById('occupation');
+    var education=document.getElementById('education');
+    var hobbies=document.getElementById('hobbies');
+
+ //var checkedTxt=document.createTextNode('checked');
+    //document.getElementById('form1').appendChild(checkedTxt);
+    //check empty
     for(var i=0; i < document.forms[0].elements.length; i++){
-        //document.write(f.elements[i]);
+        //f.elements[i].appendChild(checkedTxt);
         checkEmpty(f.elements[i],'Check Empty '+ f.elements[i].name);
+        
     }
+    checkLettersOnly(fName,'Last Name letters only');
+    checkLettersOnly(lName,'First Name letters only');
+    checkAlphaNumeric(address,'Address letters/numbers only');
+    checkLettersOnly(city,'City letters only');
+    checkNumbersOnly(zip,'Zip numbers Only');
+    checkLength(zip,5,5,'Zip must be 5 numbers');
+    checkSelection(country,'Select Your Country','Pick A Country from the List');
+    checkLettersOnly(occupation,'Occupation letters only');
+    checkSelection(education,'Enter Highest Education','Pick education from the List');
+    checkLength(hobbies,1,200,'Max 200 chars');
+    return false;
     
     
 }
@@ -34,6 +56,7 @@ function checkNumbersOnly(element,message){
         return true;
     }else{
         showAlert(element,message);
+        
     }
 }
 function checkLettersOnly(element,message){
@@ -68,7 +91,7 @@ function checkSelection(element,badMatch,message){
     }
 }
 function checkAlphaNumeric(element,message){
-    var alphaNumeric=/^[0-9a-zA-Z]+$/;
+    var alphaNumeric=/^[0-9a-zA-Z\s]+$/;
     if(element.value.match(alphaNumeric)){
         return true;
     }else{
@@ -78,6 +101,9 @@ function checkAlphaNumeric(element,message){
 
 function showAlert(element,message){
     alert(message);
+    //var errorTxt=document.createTextNode("*");
+    //element.appendChild(errorTxt);
+    //element.innerHTML='*";
     element.focus();
     return false;
 }
@@ -106,12 +132,12 @@ function toggleTestPane(){
             <div id='formEntry' class='formEntry'>
             <h2> Enter Your Information Here</h2>
             <HR></HR>
-        <form name="form1"  method="get" onSubmit="return false;">
-        First name:<input type ="text" name="firstName" size="20" ><br />
-        Last name:<input type ="text" name="lastName" size="20" ><br />
-        Street Address:<input type ="text" name="address" size="30" ><br />
-        City:<input type ="text" name="city" size="20" ><br />
-        Zip:<input type ="text" name="zip" size="5" ><br />
+        <form name="form1"  method="get" onSubmit="return validate();">
+        First name:<input type ="text" id='firstName' name="firstName" size="20" ><br />
+        Last name:<input type ="text" id='lastName' name="lastName" size="20" ><br />
+        Street Address:<input type ="text" id='address' name="address" size="30" ><br />
+        City:<input type ="text" id='city' name="city" size="20" ><br />
+        Zip:<input type ="text" id='zip'  name="zip" size="5" ><br />
         Country:<select id="country"name="country" ><br />
             <option>Select Your Country</option>
             <option>USA</option>
@@ -119,9 +145,9 @@ function toggleTestPane(){
             <option>Canada</option>
             <option>Mexico</option>
         </select><br/>
-        Occupation:<input type ="text" name="occupation" size="30" ><br />
+        Occupation:<input type ="text" id='occupation' name="occupation" size="30" ><br />
         Education Level:<select id='education'name='education'>
-            <option> Enter Highest Education </option>
+            <option>Enter Highest Education</option>
             <option>High School</option>
             <option>Some College</option>
             <option>College Degree (2yr)</option>
@@ -129,9 +155,9 @@ function toggleTestPane(){
             <option>Graduate School</option>
             <option>Post Graduate School</option>
         </select>
-        <p>Hobbies:</p>
-        <textarea  name="hobbies" rows='15' cols='40'></textarea>
-        <input type="submit" value="submit" onclick="validate()">
+        <p>Hobbies:(max length 200 chars)</p>
+        <textarea  id='hobbies' name="hobbies" rows='15' cols='40'></textarea>
+        <input type="submit" value="submit">
         </form>
     </div>
     <div class='left'>Left Column</div>
