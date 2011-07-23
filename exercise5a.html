@@ -1,14 +1,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Validation Example</title>
+<title>Name Entry</title>
 <link rel="stylesheet" type="text/css" href="classCss2.css" />
 <script type="text/javascript">
 <!--
+ var outputWindow= window.open("output.html","Output Window","width=600, height=300");
 
-var age;
+    outputResults();
+    
 
- document.getElementById('TestPane').style.visibility == 'hidden';
+document.getElementById('TestPane').style.visibility == 'hidden';
+function checkCreateText(){
+    var element=outputWindow.document.createElement('h1');
+    var eleTwo=outputWindow.document.createElement('h3');
+    var text=outputWindow.document.createTextNode('David Bethke');
+    var address=outputWindow.document.createTextNode('8009 Fierro Cove Austin,TX, USA');
+    element.appendChild(text);
+    eleTwo.appendChild(address);
+    outputWindow.document.getElementById('header').appendChild(element);
+    outputWindow.document.getElementById('main').appendChild(eleTwo);
+}
+    
 function validate(){
     var f =document.forms[0];
     var fName=document.getElementById('firstName');
@@ -26,8 +39,7 @@ function validate(){
     //check empty
     for(var i=0; i < document.forms[0].elements.length; i++){
         //f.elements[i].appendChild(checkedTxt);
-        checkEmpty(f.elements[i],'Check Empty '+ f.elements[i].name);
-        
+        checkEmpty(f.elements[i],'Check Empty '+ f.elements[i].name);      
     }
     checkLettersOnly(fName,'Last Name letters only');
     checkLettersOnly(lName,'First Name letters only');
@@ -39,8 +51,12 @@ function validate(){
     checkLettersOnly(occupation,'Occupation letters only');
     checkSelection(education,'Enter Highest Education','Pick education from the List');
     checkLength(hobbies,1,200,'Max 200 chars');
-    return false;
-    
+    return false;  
+}
+function outputResults(){
+   
+    setTimeout("",5000);
+    checkCreateText();
     
 }
 
@@ -121,6 +137,7 @@ function toggleTestPane(){
 </script>
 </head>
 <body>
+<noscript> Page Requires JavaScript</noscript>
 <HR></HR>
 <div class="header">
 <h1>Austin Build-A-Resume</h1>
@@ -167,8 +184,14 @@ function toggleTestPane(){
 </div>
 
 <div class="footer"></div>
-<div onclick="toggleTestPane()">Click to Show Test Pane </div>
+<div onclick="toggleTestPane()">Toggle Test Pane </div>
 <div id='TestPane'>
+<form>
+<input type='button' onclick="checkCreateText()" value='CheckText'/>
+</form>
+<form>
+<input type='button' onclick="checkCreateElement()" value='CheckElement'/>
+</form>
 <form>
 Enter Required Field:<input type='text' id='required'/>
 <input type='button' onclick="checkEmpty(document.getElementById('required'), 'No Value Entered')" value='CheckEmpty'/>
